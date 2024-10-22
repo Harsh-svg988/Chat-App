@@ -56,13 +56,14 @@ export const signUp = async(req,res)=>{
 }
 
 
-
 export const login = async(req,res)=>{
     try {
         const {username,password} = req.body;
         const user = await User.findOne({username})
-        const isPasswordCorrect = await bcrypt.compare(password,user?.password || " ");
-        if(!user || isPasswordCorrect){
+        const isPasswordCorrect = await bcrypt.compare(password,user?.password || "");
+
+        
+        if(!user || !isPasswordCorrect){
             return res.status(400).json({error:"Invalid Credentials"})
         }
         
@@ -82,8 +83,16 @@ export const login = async(req,res)=>{
     }
 }
 
-export const logout = (req,res)=>{
-    console.log("Logout user")
+export const logout = async(req,res)=>{
+    try {
+        res.cookie("jwt","",{maxAge:0})
+        res.status(200).json({message:"Logged out successfully"})
+        
+    } catch (error) {
+        console.log("Error in logout Controller",error.message)
+        res.status(500).json({message:"Internal Server Error"})
+        
+    }
 }
 
 
