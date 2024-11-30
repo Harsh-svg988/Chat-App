@@ -44,3 +44,20 @@ export const sendMessage = async(req,res)=>{
     }
 }
 
+
+export const getMessage = async(req,res)=>{
+    // console.log("got the message")
+    const {id:userToChatId} = req.params;
+    const senderId = req.user._id;
+    const conversation = await Conversation.findOne({
+        participants:{$all:[senderId,userToChatId]}
+    }).populate("messages")
+
+    res.status(200).json(conversation.messages)
+
+    try {
+        
+    } catch (error) {
+        console.log("Error in get message Controller",error)
+    }
+}
