@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useAuthContext } from '../Context/AuthContext';
+import toast from "react-hot-toast";
 
 function UseLogout() {
    const [loading,setLoading] = useState(false);
@@ -8,7 +9,7 @@ function UseLogout() {
    const logout = async ()=>{
     setLoading(true);
     try{
-        const response = await fetch("http://localhost:8081/api/auth/logout",{
+        const response = await fetch("api/auth/logout",{
             method: "POST",
             headers: {"Content-Type":"applicaton/json"}
         })
