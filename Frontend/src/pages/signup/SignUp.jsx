@@ -20,7 +20,6 @@ const SignUp = () => {
 		e.preventDefault();
 		console.log(inputs);
 		await signUp(inputs)
-
 	}
 	return (
 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
