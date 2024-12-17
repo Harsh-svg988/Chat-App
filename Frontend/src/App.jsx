@@ -7,7 +7,8 @@ import SignUp from './pages/signup/SignUp'
 import Home from './pages/home/Home'
 import {Routes, Route,Navigate } from 'react-router-dom'
 import {Toaster} from 'react-hot-toast'
-import { useAuthContext } from './Context/AuthContext'
+import { useAuthContext } from './context/AuthContext'
+
 
 function App() {
   const{authUser} = useAuthContext()
