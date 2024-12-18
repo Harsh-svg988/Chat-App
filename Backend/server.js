@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 import connectToMongoDB from './db/connectToMongoDb.js';
 import messageRoutes from "./routes/messageRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
-import cors from 'cors';
+// import cors from 'cors';
 import {app, server} from "./socket/socket.js"
 
 
